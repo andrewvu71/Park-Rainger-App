@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ParkRainger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script defer src="./assets/js/scripts.js"></script>
 </head>
 <body>
-    
+    <header>
+
+        <nav>
+            <div class="nav-wrapper">
+           <h6> PARK RAINger</h6>
+             
+            </div>
+          </nav>
+
+    </header>
+    <div class="container">
+        <!-- Page Content goes here -->
+        <div class="row">
+            <div class="col s12">This div is 12-columns wide on all screen sizes</div>
+            <div class="col s6"> 6-columns (first -half)
+                <label for="city">First Name</label>
+                <input placeholder="Placeholder" id="city" type="text" class="validate">
+                
+                <label for="date">Date</label>
+                <input placeholder="Placeholder" id="city" type="date" class="validate">
+                
+                <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                    <i class="material-icons right"></i>
+                  </button>
+            </div>
+            <div class="col s6">6-columns (second-half)
+                <div class="card">
+                    <div class="card-image">
+                      <img src="./assets/Images/sample-1.jpg">
+                      <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                      <p>I am a very simple card. I am good at containing small bits of information.
+                      I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                      <!-- <a  id='modalLink' href="">This is a link</a> -->
+                      <a id='modalLink' class="waves-effect waves-teal btn-flat">Click here to know more</a>
+                    </div>
+                     <div id="modal1" class="modal">
+                        <!-- <div class="modal-content">
+                          <h2>Park Details</h2>
+                         <h5>Park name: Yellow stone national park</h5>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+                        </div>  -->
+                    </div>
+                  
+                  </div>
+                 
+            </div>
+          </div>
+     
+
+      </div>
+    <main>
+
+    </main>
 </body>
 </html>
