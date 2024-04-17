@@ -1,11 +1,15 @@
 
+section {
+    @media all (min-width: 600px) {
+              
+           { flex-direction: column;
 
-@media (min-width: 600px) {
-body {
-    font-size: 1.25rem;
-} 
-
-
-
+           }
+        
+        
+        
+        
+        }
 }
+
 /*Media Queries section for the entirety of the page 
