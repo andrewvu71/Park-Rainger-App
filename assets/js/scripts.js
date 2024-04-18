@@ -167,6 +167,9 @@ const parkLocation = function(home) {
                 lon: park.longitude,
                 description: park.description,
                 address: park.addresses[0],
+                directions:park.directionsUrl,
+                image:park.images[0].url,
+                altText:park.images[0].altText,
                 parkCode: park.parkCode
             }
             parkData.push(parkInfo);
@@ -246,6 +249,7 @@ const getWeather = function(parkData) {
         })
     }, fetchTimer)
 }
+
 btnSearch.addEventListener('click',getWeatherDetails);
 
 
