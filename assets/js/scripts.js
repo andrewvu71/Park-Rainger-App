@@ -4,6 +4,7 @@
 const modal= document.getElementById('modal1');
 const btnSearch= document.getElementById('btnSearch');
 const weatherCards= document.getElementById('weatherCard');
+const zipcode= document.getElementById('txtZipcode');
 
 const  APIKey = 'X4cFIkirB6EJTJYaTubCtg5RgOouTq1luIm4p0IB';
 let parkCode='abli';
@@ -111,9 +112,15 @@ function getWeatherDetails()
   const cardContent= document.createElement("div");
   cardContent.classList.add('card-content');
   divcard.append(cardContent);
-  const cardWeather= document.createElement("h3");
-  cardWeather.textContent='I am a very simple card. I am good at containing small bits of information.';
-  cardContent.append('cardWeather');
+  const rainChance= document.createElement("h3");
+  rainChance.textContent=chance;
+  cardContent.append('rainChance');
+  const rainamount= document.createElement("h3");
+  cardWeather.textContent=amount;
+  cardContent.append('rainamount');
+  const rainDate= document.createElement("h3");
+  cardWeather.textContent=date;
+  cardContent.append('rainDate');
   
   const cardAction= document.createElement("div");
   cardAction.classList.add('card-action');
@@ -133,6 +140,7 @@ function getWeatherDetails()
 // Fetch coordinates from Zip Code
 const getLocation = function(input) {
     const homeLocation = input.trim();
+   // const homeLocation = zipcode.textContent.trim();
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${homeLocation}&key=AIzaSyA6_fb9VakKHBcqkyryNKgwbmO6CsVGGnQ`)
     .then(function(response) {
         return response.json();
@@ -232,6 +240,7 @@ const getWeather = function(parkData) {
                             parkData[i].parkWeather.chance = data[i].timelines.daily[j].values.precipitationProbabilityMax;
                             parkData[i].parkWeather.amount = data[i].timelines.daily[j].values.rainAccumulationSum;
                             parkData[i].parkWeather.date = data[i].timelines.daily[j].time;
+                            getWeatherDetails(parkData[i].parkWeather.chance,parkData[i].parkWeather.amount, parkData[i].parkWeather.date);// calling this function to display details in weather card
                         }
                     }
                 }
@@ -241,7 +250,7 @@ const getWeather = function(parkData) {
                 if (parkData.length > 4) {
                     parkData.splice(4, parkData.length - 4)
                 }
-
+               
             })
         })
     }, fetchTimer)
