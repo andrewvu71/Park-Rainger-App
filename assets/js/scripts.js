@@ -8,118 +8,130 @@ const zipcode= document.getElementById('txtZipcode');
 const parentDivId= document.getElementById('parentDiv');
 
 
-const  APIKey = 'X4cFIkirB6EJTJYaTubCtg5RgOouTq1luIm4p0IB';
-let parkCode='abli';
-let requestUrl = 'https://developer.nps.gov/api/v1/parks';
 const parkData = [];
 
 
-function getParkDetails()
+function getParkDetails(event)
 { 
     event.preventDefault();
-    requestUrl =`https://developer.nps.gov/api/v1/parks?ParkCode=${parkCode}&api_key=${APIKey}`;
-    fetch(requestUrl)
-    .then(function (response) {
-      if (response.ok) {
-        console.log(response);
-        response.json().then(function (data) {
-          console.log(data);
-          
-         //this condition is to reset elements in modal. It deletes all previous elements in modal 
-         if(modal.hasChildNodes)
-         {
-          modal.replaceChildren("");
-         }
 
-         //create modal elements
-         const divModal = document.createElement("div");
-         
-         divModal.classList.add("modal-content");
-         
-         const h2 = document.createElement("h2");
-         h2.textContent="Park Details";
-         divModal.append(h2);
-         const address = document.createElement("h5");
-         address.textContent="Address";
-         divModal.append(address);
-         const addressLine1 = document.createElement("h6");
-         addressLine1.textContent= data.data[0].addresses[0].line1;
-         divModal.append(addressLine1);
-         const city= document.createElement("h6");
-         city.textContent=data.data[0].addresses[0].city;
-         divModal.append(city);
-         const postalCode= document.createElement("h6");
-         postalCode.textContent=data.data[0].addresses[0].postalCode;
-         divModal.append(postalCode);
-         const weatherInfo = document.createElement("h5");
-         weatherInfo.textContent="WeatherDetails";
-         divModal.append(weatherInfo);
-         const weatherInfoDetails = document.createElement("h6");
-         weatherInfoDetails.textContent=data.data[0].weatherInfo;
-         divModal.append(weatherInfoDetails);
-         const direction = document.createElement("h5");
-         direction.textContent="For direction visit the below link";
-         divModal.append(direction);
-         const directionURL= document.createElement("a");
-         directionURL.textContent=data.data[0].directionsUrl;
-         divModal.append(directionURL);
-         modal.append(divModal);
-         //footer
-         const footerDiv= document.createElement("div");
-         footerDiv.classList.add("modal-footer");
-         
-         modal.append(footerDiv);
-         const closeButton= document.createElement("a");
-         closeButton.classList.add("modal-close");
-         closeButton.classList.add("waves-effect");
-         closeButton.classList.add("waves-green");
-         closeButton.classList.add("btn-flat");
-         closeButton.textContent="Close";
-         footerDiv.append(closeButton);
-         
-         var instance = M.Modal.init(modal);
-         
-         instance.open();
-         
-         
-        });
-      } else {
-          alert(`Error:${response.statusText}`);
-      }
-    })
-    .catch(function (error) {
-      console.log(error.statusText);
-    });
+    // TODO: Change this line to select based on which card was clicked
+    let parkIndex = 0;
+    //this condition is to reset elements in modal. It deletes all previous elements in modal 
+    if(modal.hasChildNodes)
+    {
+        modal.replaceChildren("");
+    }
+
+    //create modal elements
+    const divModal = document.createElement("div");
     
+    divModal.classList.add("modal-content");
     
+    const h2 = document.createElement("h2");
+    h2.textContent="Park Details";
+    divModal.append(h2);
+    const modalParkName = document.createElement("h6")
+    modalParkName.textContent = parkData[parkIndex].name;
+    divModal.append(modalParkName);
+    const address = document.createElement("h5");
+    address.textContent="Address";
+    divModal.append(address);
+    const addressLine1 = document.createElement("h6");
+    addressLine1.textContent= parkData[parkIndex].address.line1;
+    divModal.append(addressLine1);
+    const city= document.createElement("h6");
+    city.textContent=parkData[parkIndex].address.city;
+    divModal.append(city);
+    const postalCode= document.createElement("h6");
+    postalCode.textContent=parkData[parkIndex].address.postalCode;
+    divModal.append(postalCode);
+    
+    const parkInfo = document.createElement("h5");
+    parkInfo.textContent="Park Description";
+    divModal.append(parkInfo);
+    const parkInfoDetails = document.createElement("h6");
+    parkInfoDetails.textContent=parkData[parkIndex].description;
+    divModal.append(parkInfoDetails);
+    const direction = document.createElement("h5");
+    divModal.append(direction);
+    const directionURL= document.createElement("a");
+    directionURL.textContent="Click here for directions.";
+    directionURL.setAttribute('href', parkData[parkIndex].directions);
+    divModal.append(directionURL);
+    modal.append(divModal);
+    //footer
+    const footerDiv= document.createElement("div");
+    footerDiv.classList.add("modal-footer");
+    
+    modal.append(footerDiv);
+    const closeButton= document.createElement("a");
+    closeButton.classList.add("modal-close");
+    closeButton.classList.add("waves-effect");
+    closeButton.classList.add("waves-green");
+    closeButton.classList.add("btn-flat");
+    closeButton.textContent="Close";
+    footerDiv.append(closeButton);
+    
+    var instance = M.Modal.init(modal);
+    
+    instance.open();
 }
 
 
-function getWeatherDetails(chance,amount,date,name,image)
+// function getWeatherDetails(chance,amount,date,name,image)
+function getWeatherDetails(parkData)
 {
-
-    const cardDiv= document.createElement("div");
-    cardDiv.innerHTML=` <div class="row">
-                    <div class="col s12 m3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src=${image}>
+    for (i = 0; i < parkData.length; i++) {
+        const cardDiv= document.createElement("div");
+        cardDiv.innerHTML=` <div class="row">
+                        <div class="col s12 m3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src=${parkData[i].image}>
+                                   
+                                </div>
+                                <div class="card-content">
+                                    <h3>Park name: ${parkData[i].name}</h3>
+                                    <h3>Rain Chance: ${parkData[i].parkWeather.chance}</h3>
+                                    <h3>Rain Amount: ${parkData[i].parkWeather.amount}</h3>
+                                    <h3>Rain Date:${parkData[i].parkWeather.date}</h3>
+                                </div>
+                            <div class="card-action">
+                            
+                            <button id="park-card-${i}" class="btnParkDetail btn waves-effect">Click here for more details!</button>
+                          </div>
+                    </div>
+                </div>`;
+            
+        parentDivId.append(cardDiv);  
+        cardButton = document.getElementById(`park-card-${i}`);
+        cardButton.addEventListener('click', getParkDetails);
+    }
+    
+    
+    // const cardDiv= document.createElement("div");
+    // cardDiv.innerHTML=` <div class="row">
+    //                 <div class="col s12 m3">
+    //                     <div class="card">
+    //                         <div class="card-image">
+    //                             <img src=${image}>
                                
-                            </div>
-                            <div class="card-content">
-                                <h3>Park name: ${name}</h3>
-                                <h3>Rain Chance: ${chance}</h3>
-                                <h3>Rain Amount: ${amount}</h3>
-                                <h3>Rain Date:${date}</h3>
-                            </div>
-                        <div class="card-action">
+    //                         </div>
+    //                         <div class="card-content">
+    //                             <h3>Park name: ${name}</h3>
+    //                             <h3>Rain Chance: ${chance}</h3>
+    //                             <h3>Rain Amount: ${amount}</h3>
+    //                             <h3>Rain Date:${date}</h3>
+    //                         </div>
+    //                     <div class="card-action">
                         
-                        <button id="btnParkDetail" class="btn waves-effect">Click here for more details!</button>
-                      </div>
-                </div>
-            </div>`;
+    //                     <button id="btnParkDetail" class="btn waves-effect">Click here for more details!</button>
+    //                   </div>
+    //             </div>
+    //         </div>`;
         
-            parentDivId.append(cardDiv);      
+    // parentDivId.append(cardDiv);      
             
       
 
@@ -180,6 +192,7 @@ const getLocation = function(event) {
     event.preventDefault();
     const homeLocation = zipcode.value.trim();
    // const homeLocation = zipcode.textContent.trim();
+   console.log(homeLocation)
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${homeLocation}&key=AIzaSyA6_fb9VakKHBcqkyryNKgwbmO6CsVGGnQ`)
     .then(function(response) {
         return response.json();
@@ -286,7 +299,7 @@ const getWeather = function(parkData) {
                             parkData[i].parkWeather.amount = data[i].timelines.daily[j].values.rainAccumulationSum;
                             parkData[i].parkWeather.date = data[i].timelines.daily[j].time;
                             console.log(parkData[i]);
-                            getWeatherDetails(parkData[i].parkWeather.chance,parkData[i].parkWeather.amount, parkData[i].parkWeather.date,parkData[i].name,parkData[i].image);// calling this function to display details in weather card
+                            // getWeatherDetails(parkData[i].parkWeather.chance,parkData[i].parkWeather.amount, parkData[i].parkWeather.date,parkData[i].name,parkData[i].image);// calling this function to display details in weather card
                         }
                     }
                 }
@@ -296,11 +309,13 @@ const getWeather = function(parkData) {
                 if (parkData.length > 4) {
                     parkData.splice(4, parkData.length - 4)
                 }
-               
+               getWeatherDetails(parkData);
             })
         })
     }, fetchTimer)
 }
+
+// btnSearch.addEventListener('click',getWeatherDetails);
 
 btnSearch.addEventListener('click',getLocation);
 
