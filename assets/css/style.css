@@ -1,15 +1,4 @@
-
-section {
-    @media all (min-width: 600px) {
-              
-           { flex-direction: column;
-
-           }
-        
-        
-        
-        
-        }
+a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
-
-/*Media Queries section for the entirety of the page 
