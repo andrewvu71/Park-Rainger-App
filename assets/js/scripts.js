@@ -85,17 +85,17 @@ function getWeatherDetails(parkData)
     for (i = 0; i < parkData.length; i++) {
         const cardDiv= document.createElement("div");
         cardDiv.innerHTML=` <div class="row">
-                        <div class="col s12 m3">
+                        <div class="col s12 m6">
                             <div class="card">
                                 <div class="card-image">
                                     <img src=${parkData[i].image}>
                                    
                                 </div>
                                 <div class="card-content">
-                                    <h3>Park name: ${parkData[i].name}</h3>
-                                    <h3>Rain Chance: ${parkData[i].parkWeather.chance}</h3>
-                                    <h3>Rain Amount: ${parkData[i].parkWeather.amount}</h3>
-                                    <h3>Rain Date:${parkData[i].parkWeather.date}</h3>
+                                    <h5>Park name: ${parkData[i].name}</h5>
+                                    <h5>Rain Chance: ${parkData[i].parkWeather.chance}</h5>
+                                    <h5>Rain Amount: ${parkData[i].parkWeather.amount}</h5>
+                                    <h5>Rain Date:${parkData[i].parkWeather.date}</h5>
                                 </div>
                             <div class="card-action">
                             
