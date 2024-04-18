@@ -79,31 +79,59 @@ function getParkDetails(event)
 }
 
 
-function getWeatherDetails(chance,amount,date,name,image)
+// function getWeatherDetails(chance,amount,date,name,image)
+function getWeatherDetails(parkData)
 {
-
-    const cardDiv= document.createElement("div");
-    cardDiv.innerHTML=` <div class="row">
-                    <div class="col s12 m3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src=${image}>
+    for (i = 0; i < parkData.length; i++) {
+        const cardDiv= document.createElement("div");
+        cardDiv.innerHTML=` <div class="row">
+                        <div class="col s12 m3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src=${parkData[i].image}>
+                                   
+                                </div>
+                                <div class="card-content">
+                                    <h3>Park name: ${parkData[i].name}</h3>
+                                    <h3>Rain Chance: ${parkData[i].parkWeather.chance}</h3>
+                                    <h3>Rain Amount: ${parkData[i].parkWeather.amount}</h3>
+                                    <h3>Rain Date:${parkData[i].parkWeather.date}</h3>
+                                </div>
+                            <div class="card-action">
+                            
+                            <button id="park-card-${i}" class="btnParkDetail btn waves-effect">Click here for more details!</button>
+                          </div>
+                    </div>
+                </div>`;
+            
+        parentDivId.append(cardDiv);  
+        cardButton = document.getElementById(`park-card-${i}`);
+        cardButton.addEventListener('click', getParkDetails);
+    }
+    
+    
+    // const cardDiv= document.createElement("div");
+    // cardDiv.innerHTML=` <div class="row">
+    //                 <div class="col s12 m3">
+    //                     <div class="card">
+    //                         <div class="card-image">
+    //                             <img src=${image}>
                                
-                            </div>
-                            <div class="card-content">
-                                <h3>Park name: ${name}</h3>
-                                <h3>Rain Chance: ${chance}</h3>
-                                <h3>Rain Amount: ${amount}</h3>
-                                <h3>Rain Date:${date}</h3>
-                            </div>
-                        <div class="card-action">
+    //                         </div>
+    //                         <div class="card-content">
+    //                             <h3>Park name: ${name}</h3>
+    //                             <h3>Rain Chance: ${chance}</h3>
+    //                             <h3>Rain Amount: ${amount}</h3>
+    //                             <h3>Rain Date:${date}</h3>
+    //                         </div>
+    //                     <div class="card-action">
                         
-                        <button id="btnParkDetail" class="btn waves-effect">Click here for more details!</button>
-                      </div>
-                </div>
-            </div>`;
+    //                     <button id="btnParkDetail" class="btn waves-effect">Click here for more details!</button>
+    //                   </div>
+    //             </div>
+    //         </div>`;
         
-            parentDivId.append(cardDiv);      
+    // parentDivId.append(cardDiv);      
             
       
 
@@ -164,6 +192,7 @@ const getLocation = function(event) {
     event.preventDefault();
     const homeLocation = zipcode.value.trim();
    // const homeLocation = zipcode.textContent.trim();
+   console.log(homeLocation)
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${homeLocation}&key=AIzaSyA6_fb9VakKHBcqkyryNKgwbmO6CsVGGnQ`)
     .then(function(response) {
         return response.json();
@@ -270,7 +299,7 @@ const getWeather = function(parkData) {
                             parkData[i].parkWeather.amount = data[i].timelines.daily[j].values.rainAccumulationSum;
                             parkData[i].parkWeather.date = data[i].timelines.daily[j].time;
                             console.log(parkData[i]);
-                            getWeatherDetails(parkData[i].parkWeather.chance,parkData[i].parkWeather.amount, parkData[i].parkWeather.date,parkData[i].name,parkData[i].image);// calling this function to display details in weather card
+                            // getWeatherDetails(parkData[i].parkWeather.chance,parkData[i].parkWeather.amount, parkData[i].parkWeather.date,parkData[i].name,parkData[i].image);// calling this function to display details in weather card
                         }
                     }
                 }
@@ -280,15 +309,13 @@ const getWeather = function(parkData) {
                 if (parkData.length > 4) {
                     parkData.splice(4, parkData.length - 4)
                 }
-               
+               getWeatherDetails(parkData);
             })
         })
     }, fetchTimer)
 }
 
 // btnSearch.addEventListener('click',getWeatherDetails);
-cardButton = document.getElementById('card-1');
-cardButton.addEventListener('click', getParkDetails);
 
 btnSearch.addEventListener('click',getLocation);
 
