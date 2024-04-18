@@ -63,7 +63,7 @@ const parkSorting = function(homeCoords, parkData) {
 const getWeather = function(parkData) {
     let locationParameters = [];
     let weatherResponses = [];
-    const weatherAPIs = ['qQTBSY3Cb9QKTcgXFfM6EDZWjnv5C33m', 'uN7jDJ5liRJytxbbSjcQUEkYYQqa6qOd', '2u3FDpARrZjayBFQDHe5WIJm45yt0y0G'];
+    const weatherAPIs = ['qQTBSY3Cb9QKTcgXFfM6EDZWjnv5C33m', 'uN7jDJ5liRJytxbbSjcQUEkYYQqa6qOd', '2u3FDpARrZjayBFQDHe5WIJm45yt0y0G', 'JFoUCG4Lux9sxayhPg37yW2OddUq8NGO'];
     weatherAPIs.push(...weatherAPIs);
     for (park of parkData) {
         locationParameters.push(`${park.lat},${park.lon}`);
