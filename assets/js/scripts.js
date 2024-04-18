@@ -1,8 +1,9 @@
 //Declaring variables
 
-const cardLink= document.getElementById('modalLink');
+//const cardLink= document.getElementById('modalLink');
 const modal= document.getElementById('modal1');
-
+const btnSearch= document.getElementById('btnSearch');
+const weatherCards= document.getElementById('weatherCard');
 
 const  APIKey = 'X4cFIkirB6EJTJYaTubCtg5RgOouTq1luIm4p0IB';
 let parkCode='abli';
@@ -90,7 +91,44 @@ function getParkDetails()
 }
 
 
+function getWeatherDetails()
+{
+  const divcard = document.createElement("div");
+  divcard.classList.add("card");
+  weatherCards.append(divcard);
+  const cardImagediv = document.createElement("div");
+  cardImagediv.classList.add("card-image");
+  divcard.append(cardImagediv);
+  const cardImage = document.createElement("img");
+  cardImage.src='./assets/Images/sample-1.jpg';
+  cardImagediv.append(cardImage);
+  const cardTitle = document.createElement("span");
+  cardTitle.classList.add('card-title');
+  cardTitle.textContent="Card Title" //add park name here from API
+  cardImagediv.append(cardTitle);
+  
+  const cardContent= document.createElement("div");
+  cardContent.classList.add('card-content');
+  divcard.append(cardContent);
+  const cardWeather= document.createElement("h3");
+  cardWeather.textContent='I am a very simple card. I am good at containing small bits of information.';
+  cardContent.append('cardWeather');
 
-cardLink.addEventListener('click',getParkDetails);
+  const cardAction= document.createElement("div");
+  cardAction.classList.add('card-action');
+  divcard.append(cardAction);
+   
+  const cardLink= document.createElement("a");
+  cardLink.id='modalLink';
+  cardLink.classList.add('waves-effect');
+  cardLink.classList.add('waves-teal');
+  cardLink.classList.add('btn-flat');
+  cardLink.textContent='Click here to know more';
+  cardLink.addEventListener('click',getParkDetails);
+  cardAction.append(cardLink);
+}
+
+btnSearch.addEventListener('click',getWeatherDetails);
+
 
 
