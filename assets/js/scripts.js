@@ -12,6 +12,7 @@ function getParkDetails(event)
 { 
     event.preventDefault();
 
+    // TODO: Change this line to select based on which card was clicked
     let parkIndex = 0;
     //this condition is to reset elements in modal. It deletes all previous elements in modal 
     if(modal.hasChildNodes)
@@ -28,7 +29,7 @@ function getParkDetails(event)
     h2.textContent="Park Details";
     divModal.append(h2);
     const modalParkName = document.createElement("h6")
-    modalParkName.textcontent = parkData[parkIndex].name;
+    modalParkName.textContent = parkData[parkIndex].name;
     divModal.append(modalParkName);
     const address = document.createElement("h5");
     address.textContent="Address";
@@ -44,23 +45,16 @@ function getParkDetails(event)
     divModal.append(postalCode);
     
     const parkInfo = document.createElement("h5");
-    parkInfo.textContent="ParkDetail";
+    parkInfo.textContent="Park Description";
     divModal.append(parkInfo);
     const parkInfoDetails = document.createElement("h6");
     parkInfoDetails.textContent=parkData[parkIndex].description;
     divModal.append(parkInfoDetails);
-    // const weatherInfo = document.createElement("h5");
-    // const weatherInfo = document.createElement("h5");
-    // weatherInfo.textContent="WeatherDetails";
-    // divModal.append(weatherInfo);
-    // const weatherInfoDetails = document.createElement("h6");
-    // weatherInfoDetails.textContent=parkData[parkIndex].weatherInfo;
-    // divModal.append(weatherInfoDetails);
     const direction = document.createElement("h5");
     divModal.append(direction);
     const directionURL= document.createElement("a");
     directionURL.textContent="Click here for directions.";
-    directionURL.createAttribute('href', parkData[parkIndex].directions);
+    directionURL.setAttribute('href', parkData[parkIndex].directions);
     divModal.append(directionURL);
     modal.append(divModal);
     //footer
@@ -240,7 +234,8 @@ const getWeather = function(parkData) {
     }, fetchTimer)
 }
 
-btnSearch.addEventListener('click',getWeatherDetails);
-
+// btnSearch.addEventListener('click',getWeatherDetails);
+cardButton = document.getElementById('card-1');
+cardButton.addEventListener('click', getParkDetails);
 
 
