@@ -7,7 +7,7 @@ const zipcode= document.getElementById('txtZipcode');
 const parentDivId= document.getElementById('parentDiv');
 const resultsTitle= document.getElementById('results-title');
 
-const parkData = [];
+let parkData = [];
 
 
 function getParkDetails(event)
@@ -116,6 +116,10 @@ function getWeatherDetails(parkData)
 const getLocation = function(event) {
     event.preventDefault();
     
+    // Resets Park Cards on new search
+    parkData = [];
+    parentDivId.innerHTML = '';
+
     resultsTitle.textContent = "Finding parks near you with rain..."
     const homeLocation = zipcode.value.trim();
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${homeLocation}&key=AIzaSyA6_fb9VakKHBcqkyryNKgwbmO6CsVGGnQ`)
