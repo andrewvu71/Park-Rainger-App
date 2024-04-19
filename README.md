@@ -2,15 +2,16 @@
 
 ## Description
 
-This repository is made for the purpose of CREATE DESCRIPTION HERE
+This repository is made for the purpose of creating the Park Rainger App.  Search nearby National Parks with rain near any specified Zip Code!
 
 ## Visuals
 
 ![Screenshot of Completed Site](./assets/images/preview.png)
+![Modal with Park Details](./assets/images/details-modal.png)
 
 ## Usage
 
-List how to interact with site.  NOTIFY TO OPEN CONSOLE IF NEEDED
+Type in your Zip Code and click search.  Once your results pop up, you can click on the more details button for a modal containing the park name, address, description, and a link to directions.
 
 ## Technologies Used
 
@@ -18,7 +19,7 @@ HTML 5, CSS 3, Javascript ES6+
 
 ## Links
 
-[Page Link]()
+[Page Link](https://andrewvu71.github.io/Park-Rainger-App)
 
 [Repository link (Github)](https://github.com/andrewvu71/Park-Rainger-App)
 
@@ -28,4 +29,17 @@ Please refer to LICENSE in repository
 
 ## Credits
 
+Google Maps API: \
+https://developers.google.com/maps/ \
+Geocoding API
 
+US National Park Service API: \
+https://www.nps.gov/subjects/developer/index.htm \
+/parks API
+
+Tomorrow.io: \
+https://www.tomorrow.io/weather-api/ 
+
+Materialize CSS \
+https://materializecss.com/ \
+v1.0.0
