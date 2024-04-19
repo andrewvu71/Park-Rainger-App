@@ -22,108 +22,31 @@
         <div class="nav-wrapper indigo accent-1">
             <a href="" class="brand-logo">Park Rainger☁</a>
             <ul id="nav-mobile" class ="right hide-on-med-and-down">
-                <li><a href="#">Made By</a></li>
-                <li><a href="#">J.T</a></li>
-                <li><a href="#">Janani</a></li>
-                <li><a href="#">Alvin</a></li>
-                <li><a href="#">Andrew</a></li>
+                <li><a>Made By</a></li>
+                <li><a href="https://github.com/jtschams">J.T</a></li>
+                <li><a href="https://github.com/janani787">Janani</a></li>
+                <li><a href="https://github.com/lazybeast904">Alvin</a></li>
+                <li><a href="https://github.com/andrewvu71">Andrew</a></li>
             </ul> 
         </div>
     </nav>
     <div class="row">
 <!--This is the left side of the page, where the search bar is-->
-<div class="col s3">
+<div class="col s12 m3">
     <h4>Enter your zipcode!</h4>
     <input id="txtZipcode" type="text" placeholder="Enter a valid zipcode" spellcheck="false">
-    <form class = "col s12 m6">     
+    <form class = "row s12 m9 center-align">     
         <button id="btnSearch" class="btn waves-effect">Search</button>
     </form>       
 </div>
 
 <!--This is the right side of the page, where the cards will go-->
 
-<h5 class="center-align">National Parks with Rain in Forecast</h5>
-<!-- <div id="parentDiv" class="col s12 m6 right"> 
+<h5 id="results-title" class="center-align"></h5>
+<div id="parentDiv" class="col s12 m9 right"> 
 
-  </div> -->
-  <div id="parentDiv" class="col s12 m6 right"> 
-
-    <div> <div class="row">
-                          <div class="col s12 m6">
-                              <div class="card">
-                                  <div class="card-image">
-                                      <img src="https://www.nps.gov/common/uploads/structured_data/3C7F3BE3-1DD8-B71B-0BD24272B0D8B14F.jpg">
-                                     
-                                  </div>
-                                  <div class="card-content">
-                                      <h5>Park name: Waco Mammoth</h5>
-                                      <h5>Rain Chance: 70</h5>
-                                      <h5>Rain Amount: 1.19</h5>
-                                      <h5>Rain Date:2024-04-20T11:00:00Z</h5>
-                                  </div>
-                              <div class="card-action">
-                              
-                              <button id="park-card-0" class="btnParkDetail btn waves-effect">Click here for more details!</button>
-                            </div>
-                      </div>
-                  </div></div></div><div> <div class="row">
-                          <div class="col s12 m6">
-                              <div class="card">
-                                  <div class="card-image">
-                                      <img src="https://www.nps.gov/common/uploads/structured_data/02285E73-E7E1-7DD1-D32664249812EF9D.jpg">
-                                     
-                                  </div>
-                                  <div class="card-content">
-                                      <h5>Park name: Big Thicket</h5>
-                                      <h5>Rain Chance: 60</h5>
-                                      <h5>Rain Amount: 0.97</h5>
-                                      <h5>Rain Date:2024-04-20T11:00:00Z</h5>
-                                  </div>
-                              <div class="card-action">
-                              
-                              <button id="park-card-1" class="btnParkDetail btn waves-effect">Click here for more details!<div class="waves-ripple " data-hold="1713467080238" data-scale="scale(9)" data-x="79" data-y="26.796875" style="top:26.796875px;left:79px;-webkit-transform:scale(9);-moz-transform:scale(9);-ms-transform:scale(9);-o-transform:scale(9);transform:scale(9);opacity:1;-webkit-transition-duration:750ms;-moz-transition-duration:750ms;-o-transition-duration:750ms;transition-duration:750ms;-webkit-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);-moz-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);-o-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);"></div></button>
-                            </div>
-                      </div>
-                  </div></div></div><div> <div class="row">
-                          <div class="col s12 m6">
-                              <div class="card">
-                                  <div class="card-image">
-                                      <img src="https://www.nps.gov/common/uploads/structured_data/3C7E7812-1DD8-B71B-0B21FD984B4C001C.jpg">
-                                     
-                                  </div>
-                                  <div class="card-content">
-                                      <h5>Park name: El Camino Real de los Tejas</h5>
-                                      <h5>Rain Chance: 55</h5>
-                                      <h5>Rain Amount: 2.4</h5>
-                                      <h5>Rain Date:2024-04-20T11:00:00Z</h5>
-                                  </div>
-                              <div class="card-action">
-                              
-                              <button id="park-card-2" class="btnParkDetail btn waves-effect">Click here for more details!</button>
-                            </div>
-                      </div>
-                  </div></div></div><div> <div class="row">
-                          <div class="col s12 m6">
-                              <div class="card">
-                                  <div class="card-image">
-                                      <img src="https://www.nps.gov/common/uploads/structured_data/FE93563C-B920-FCC4-73E75A4CE886A72F.jpg">
-                                     
-                                  </div>
-                                  <div class="card-content">
-                                      <h5>Park name: Lyndon B Johnson</h5>
-                                      <h5>Rain Chance: 55</h5>
-                                      <h5>Rain Amount: 1.45</h5>
-                                      <h5>Rain Date:2024-04-20T11:00:00Z</h5>
-                                  </div>
-                              <div class="card-action">
-                              
-                              <button id="park-card-3" class="btnParkDetail btn waves-effect">Click here for more details!<div class="waves-ripple " data-hold="1713467134413" data-scale="scale(9)" data-x="72" data-y="13.609375" style="top:13.609375px;left:72px;-webkit-transform:scale(9);-moz-transform:scale(9);-ms-transform:scale(9);-o-transform:scale(9);transform:scale(9);opacity:1;-webkit-transition-duration:750ms;-moz-transition-duration:750ms;-o-transition-duration:750ms;transition-duration:750ms;-webkit-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);-moz-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);-o-transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);transition-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);"></div></button>
-                            </div>
-                      </div>
-                  </div></div></div></div>
-       
- 
-</div> -->
+</div>
+  
  <!-- Modal Trigger -->
   <div class="col s8">
     <div id="weatherCard">
@@ -135,10 +58,10 @@
           </div>
 
         </div>          
+    </div>
 
     <script src="./assets/js/scripts.js"></script>
-    <script></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <!-- <script type="text/javascript" src=".assets/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src=".assets/js/materialize.min.js"></script> -->
 </body>
 </html>

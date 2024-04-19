@@ -2,3 +2,8 @@ a {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
 }
+
+.card-image img {
+    object-fit: cover;
+    max-height:200px;
+}
