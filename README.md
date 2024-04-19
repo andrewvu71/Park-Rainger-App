@@ -4,6 +4,10 @@
 
 This repository is made for the purpose of creating the Park Rainger App.  Search nearby National Parks with rain near any specified Zip Code!
 
+## Other Contributors
+
+A big thank you to Janani who has been a contributor since the beginning.  Her branches were the feature/index.html and feature/code-merge branches.
+
 ## Visuals
 
 ![Screenshot of Completed Site](./assets/images/preview.png)
